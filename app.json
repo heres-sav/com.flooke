@@ -1,4 +1,8 @@
 {
-  "name": "Flooke",
-  "displayName": "Flooke"
+  "name": "flooke",
+  "extra": {
+    "eas": {
+      "projectId": "52f94beb-04ce-450e-86ee-9a81d71e68f8"
+    }
+  }
 }

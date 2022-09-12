@@ -1,5 +1,5 @@
 {
-  "name": "Flooke",
+  "name": "com.flooke",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,8 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "18.1.0",
-    "react-native": "0.70.0"
+    "expo": "^46.0.0",
+    "expo-dev-client": "^1.2.1",
+    "react": "18.0.0",
+    "react-native": "0.69.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

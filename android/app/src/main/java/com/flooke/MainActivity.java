@@ -1,10 +1,14 @@
 package com.flooke;
 
+import android.content.Intent;
+import expo.modules.ReactActivityDelegateWrapper;
+import expo.modules.devlauncher.DevLauncherController;
+import expo.modules.devmenu.react.DevMenuAwareReactActivity;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends DevMenuAwareReactActivity {
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -22,7 +26,20 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
-    return new MainActivityDelegate(this, getMainComponentName());
+    return DevLauncherController.wrapReactActivityDelegate(
+      this,
+      () -> new ReactActivityDelegateWrapper(
+        this,
+        new ReactActivityDelegate(this, getMainComponentName())
+      )
+    );
+  }
+  @Override
+  public void onNewIntent(Intent intent) {
+    if (DevLauncherController.tryToHandleIntent(this, intent)) {
+      return;
+    }
+    super.onNewIntent(intent);
   }
 
   public static class MainActivityDelegate extends ReactActivityDelegate {
