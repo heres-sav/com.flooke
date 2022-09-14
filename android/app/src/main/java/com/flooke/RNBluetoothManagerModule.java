@@ -173,16 +173,18 @@ public class RNBluetoothManagerModule extends ReactContextBaseJavaModule
         if(adapter == null){
             promise.reject(EVENT_BLUETOOTH_NOT_SUPPORT);
         }else {
-            cancelDisCovery();
-            int permissionChecked = ContextCompat.checkSelfPermission(reactContext, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+            cancelDiscovery();
+            int permissionChecked = ContextCompat.checkSelfPermission(
+                reactContext,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+            );
             if (permissionChecked == PackageManager.PERMISSION_DENIED) {
                 // // TODO: 2018/9/21
                 ActivityCompat.requestPermissions(reactContext.getCurrentActivity(),
                         new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                         1);
             }
-
-
+            
             pairedDeivce = new JSONArray();
             foundDevice = new JSONArray();
             Set<BluetoothDevice> boundDevices = adapter.getBondedDevices();
@@ -202,7 +204,7 @@ public class RNBluetoothManagerModule extends ReactContextBaseJavaModule
             emitRNEvent(EVENT_DEVICE_ALREADY_PAIRED, params);
             if (!adapter.startDiscovery()) {
                 promise.reject("DISCOVER", "NOT_STARTED");
-                cancelDisCovery();
+                cancelDiscovery();
             } else {
                 promiseMap.put(PROMISE_SCAN, promise);
             }
@@ -310,7 +312,7 @@ public class RNBluetoothManagerModule extends ReactContextBaseJavaModule
         }
     }
 
-    private void cancelDisCovery() {
+    private void cancelDiscovery() {
         try {
             BluetoothAdapter adapter = this.getBluetoothAdapter();
             if (adapter!=null && adapter.isDiscovering()) {

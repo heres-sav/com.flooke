@@ -32,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-           packages.add(new RNBluetoothEscposPrinterPackage());
+          packages.add(new RNBluetoothEscposPrinterPackage());
           return packages;
         }
 
@@ -43,7 +43,7 @@ public class MainApplication extends Application implements ReactApplication {
       });
 
   private final ReactNativeHost mNewArchitectureNativeHost =
-      new ReactNativeHostWrapper(this, new MainApplicationReactNativeHost(this));
+    new ReactNativeHostWrapper(this, new MainApplicationReactNativeHost(this));
 
   @Override
   public ReactNativeHost getReactNativeHost() {

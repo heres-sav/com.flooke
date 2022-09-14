@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "npx expo run:android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -13,7 +13,9 @@
     "expo": "^46.0.0",
     "expo-dev-client": "^1.2.1",
     "react": "18.0.0",
-    "react-native": "0.69.5"
+    "react-native": "0.69.5",
+    "react-native-ble-manager": "^8.4.3",
+    "react-native-ble-plx": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
